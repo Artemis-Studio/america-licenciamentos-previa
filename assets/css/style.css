@@ -386,6 +386,29 @@ ul, ol { list-style: none; }
 .testimonial__name { color: var(--blue-600); }
 .testimonial__source:hover { text-decoration: underline; text-underline-offset: 3px; }
 
+/* Saúde e clínicas */
+.health { scroll-margin-top: 104px; }
+.health__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: var(--content-gap); }
+.health__intro { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.health__intro .t-body { max-width: 480px; }
+.health__play {
+  position: absolute; inset: 50% auto auto 50%; transform: translate(-50%, -50%);
+  display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%;
+  background: var(--ink-950); color: var(--white);
+}
+.health__caption { margin-top: 16px; }
+.health__testimonials, .health__logos { margin-top: 40px; }
+.health__testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 24px; margin-top: 16px; }
+.health__testimonials-grid .health__video { min-height: 0; }
+.health__logos .logo-grid { margin-top: 12px; }
+.health__logos .logo-grid__cell { border-bottom: 0; }
+.health__logos .logo-grid__cell::after { display: none; }
+.health__video { position: relative; aspect-ratio: 16 / 9; min-height: 200px; border-radius: var(--r-lg); overflow: hidden; background: var(--ink-950); }
+.health__video > a { position: absolute; inset: 0; }
+.health__video > a:focus-visible { outline-offset: -4px; }
+.health__video img { width: 100%; height: 100%; object-fit: cover; }
+.health__video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
 /* =========================================================
    11. Para contadores — 7053:869
    ========================================================= */
@@ -401,24 +424,18 @@ ul, ol { list-style: none; }
 .accountants__text, .accountants__aside { display: flex; flex-direction: column; gap: 24px; }
 .accountants__text > .link-caret { align-self: flex-start; }
 .accountants__text .t-h2 { margin-top: 8px; }
-.accountants__text .stack-p, .accountants__situations ul, .accountants__caption .t-small, .accountants__case p { color: var(--gray-200); }
+.accountants__text .stack-p, .accountants__situations ul, .accountants__case p { color: var(--gray-200); }
 .accountants__situations ul { list-style: disc; padding-inline-start: 20px; margin-top: 12px; }
 .accountants__situations li + li { margin-top: 8px; }
-.accountants__img { position: relative; aspect-ratio: 16 / 9; min-height: 200px; border-radius: var(--r-lg); overflow: hidden; background: var(--ink-950); }
-.accountants__img > a { position: absolute; inset: 0; }
-.accountants__img > a:focus-visible { outline-offset: -4px; }
-.accountants__img img { width: 100%; height: 100%; object-fit: cover; }
-.accountants__img iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.accountants__caption { margin-top: 16px; }
 .accountants__case { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 20px; border: 1px solid var(--line-on-dark); border-radius: var(--r-lg); }
 .accountants__case a { margin-top: 4px; }
 .accountants__steps {
-  grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) 32px minmax(0, 1.35fr);
-  align-items: center; gap: 16px; padding-top: 24px; border-top: 1px solid var(--line-on-dark); scroll-margin-top: 104px;
+  display: flex; flex-direction: column;
+  align-items: flex-start; gap: 12px; padding-top: 24px; scroll-margin-top: 104px;
 }
 .accountants__steps li { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-.accountants__steps .accountants__arrow { width: 32px; height: 32px; align-items: center; justify-content: center; transform: rotate(-90deg); }
-.accountants__arrow svg { width: auto; height: 32px; }
+.accountants__steps .accountants__arrow { width: 24px; height: 24px; align-items: center; justify-content: center; }
+.accountants__arrow svg { width: auto; height: 24px; }
 
 /* =========================================================
    12. Blog — 7053:924
@@ -443,11 +460,11 @@ ul, ol { list-style: none; }
    ========================================================= */
 /* Figma: space-between (432 + 696 em 1216 → 88px livres); o gap de 112 do auto-layout é ignorado */
 .faq__grid { display: flex; justify-content: space-between; gap: 48px; }
-.faq__aside { width: 432px; flex: none; display: flex; flex-direction: column; gap: 32px; align-self: flex-start; }
+.faq__aside { position: sticky; top: 104px; width: 432px; flex: none; display: flex; flex-direction: column; gap: 32px; align-self: flex-start; }
 .faq__box { position: relative; overflow: hidden; padding: 32px; border-radius: var(--r-lg); background: var(--surface-100); display: flex; flex-direction: column; gap: 32px; align-items: flex-start; }
 .faq__box p + p { margin-top: 12px; }
-.faq__box .btn { position: relative; z-index: 1; }
-.faq__art { position: absolute; left: 203px; top: 138px; width: 197px; height: 197px; pointer-events: none; }
+.faq__box .btn { position: relative; z-index: 1; max-width: 100%; white-space: normal; }
+.faq__art { position: absolute; right: 32px; top: 118px; width: 197px; max-width: calc(100% - 32px); height: auto; pointer-events: none; }
 .faq__list { width: 696px; flex: none; display: flex; flex-direction: column; gap: 24px; }
 .faq-item { border-bottom: 1px solid var(--line); padding-bottom: 24px; }
 .faq-item__q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; text-align: left; color: var(--navy-900); }
@@ -542,6 +559,7 @@ ul, ol { list-style: none; }
   .cta-box { flex-direction: column; align-items: flex-start; }
   .cta-box__art, .docs .cta-box__art { display: none; }
   .testimonials__head, .faq__aside { width: 100%; }
+  .faq__aside { position: static; }
   .testimonials__head { gap: 32px; }
   .testimonials__grid, .faq__grid { gap: 40px; }
   .about__foot .dot-pattern { display: none; }
@@ -555,6 +573,7 @@ ul, ol { list-style: none; }
   .about__media { order: -1; padding-bottom: 0; }
   .about__top { padding-top: 48px; }
   .accountants .card-section__inner { padding-block: 64px; }
+  .health__grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .accountants__grid { grid-template-columns: minmax(0, 1fr); }
 }
 
@@ -571,8 +590,6 @@ ul, ol { list-style: none; }
   .post { flex-basis: 100%; }
   .blog__head { flex-direction: column; align-items: flex-start; gap: 24px; }
   .hero__actions .btn { width: 100%; }
-  .accountants__steps { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
-  .accountants__steps .accountants__arrow { width: 24px; transform: none; }
   .footer__bar { flex-direction: column; align-items: flex-start; }
   .footer__legal { flex-direction: column; gap: 16px; }
   .footer__col { width: 100%; }

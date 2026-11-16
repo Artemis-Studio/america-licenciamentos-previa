@@ -512,6 +512,9 @@
     { g: 'testi', s: '#testimonials-title', fx: 'up', d: 20, dur: 800, at: 80 },
     { g: 'testi', s: '.testimonials__head .slider-nav', fx: 'fade', dur: 600, at: 250 },
     { g: 'testi', s: '.testimonials__track[data-track]', fx: 'up', d: 20, dur: 800, at: 150 },
+    // Saúde e clínicas
+    { g: 'health', s: '.health__video', fx: 'fade', dur: 700, decode: 'img',
+      deps: [{ s: 'img', fx: 'scale', from: 1.06, dur: 1400 }] },
     // 11. Para contadores
     { g: 'acc', s: '.accountants > .card-section__inner', fx: 'chapter',
       when: function () { return CONFIG.chapterOpen && !lite && w.innerWidth >= 961; } },
@@ -519,8 +522,6 @@
     { g: 'acc', s: '#acc-title', fx: 'up', d: 20, dur: 800, at: 80 },
     { g: 'acc', s: '.accountants__text .stack-p > p', fx: 'up', d: 16, dur: 700, lote: 90 },
     { g: 'acc', s: '.accountants__text > .link-caret--light', fx: 'fade', dur: 600 },
-    { g: 'acc', s: '.accountants__img', fx: 'fade', dur: 700, decode: 'img',
-      deps: [{ s: 'img', fx: 'scale', from: 1.06, dur: 1400 }] },
     { g: 'acc', s: 'ol.accountants__steps', fx: 'none', deps: [
       { s: ':scope > li:nth-child(1)', fx: 'up', d: 12, dur: 600, at: 0, ease: EASE },
       { s: ':scope > li:nth-child(2) > svg', fx: 'wipe-y', dur: 600, at: 160 },

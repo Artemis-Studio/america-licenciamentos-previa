@@ -81,9 +81,9 @@
 
   setupDocuments();
 
-  function setupAccountantsVideo() {
+  function setupTestimonialVideo() {
     var box = document.querySelector('[data-testimonial-player]');
-    if (!box || !('IntersectionObserver' in window)) return;
+    if (!box || window.location.protocol === 'file:' || !('IntersectionObserver' in window)) return;
 
     var link = box.querySelector('[data-testimonial-link]');
     if (!link) return;
@@ -161,7 +161,7 @@
     document.addEventListener('visibilitychange', startWhenVisible);
   }
 
-  setupAccountantsVideo();
+  setupTestimonialVideo();
 
   /* FAQ: acordeão (um aberto por vez) */
   var faq = document.querySelector('[data-faq]');

@@ -1,5 +1,5 @@
 /* =========================================================
-   América Licenciamentos — animações da home (ver ANIMACOES.md)
+   América Licenciamentos — animações de entrada (ver ANIMACOES.md)
    Conceito "carimbo de cartório": cada revelação acontece uma
    única vez, por tempo (nunca amarrada à rolagem), e termina
    exatamente no estado validado do Figma.
@@ -13,6 +13,7 @@
   'use strict';
 
   var d = document, w = window, html = d.documentElement;
+  var isClients = d.body.classList.contains('clients-page');
   if (!html.classList.contains('motion-ok')) return;   // reduce, ?static ou navegador sem suporte
 
   var EASE = 'cubic-bezier(.22,1,.36,1)';
@@ -94,7 +95,7 @@
   var records = [], recOf = new Map(), depOf = new Map(), trig = new Map();
   var busy = 0, heroLeft = 0, heroDone = true, halt = false, cleaned = false, booted = false;
   var heroEls = [], ioIn, ioFoot, ioPre, lastW = w.innerWidth, minStart = 0;
-  var lite = false, small = false, audit = false, snap = null, svgSeq = 0;
+  var lite = false, small = false, audit = false, snap = null, auditCounterText = null, svgSeq = 0;
 
   /* Movimento reduzido no meio da sessão (§10) */
   var mqReduce = w.matchMedia('(prefers-reduced-motion: reduce)');
@@ -509,12 +510,20 @@
     { g: 'cases', s: '.cases__cta > .btn', fx: 'up', d: 16, dur: 600 },
     // 10. Depoimentos (nunca marcar .testimonial)
     { g: 'testi', s: '.testimonials__head .eyebrow', fx: 'up', d: 12, dur: 600 },
-    { g: 'testi', s: '#testimonials-title', fx: 'up', d: 20, dur: 800, at: 80 },
+    { g: 'testi', s: '#testimonials-title, #clients-feedback-title', fx: 'up', d: 20, dur: 800, at: 80 },
     { g: 'testi', s: '.testimonials__head .slider-nav', fx: 'fade', dur: 600, at: 250 },
     { g: 'testi', s: '.testimonials__track[data-track]', fx: 'up', d: 20, dur: 800, at: 150 },
     // Saúde e clínicas
     { g: 'health', s: '.health__video', fx: 'fade', dur: 700, decode: 'img',
       deps: [{ s: 'img', fx: 'scale', from: 1.06, dur: 1400 }] },
+    // Página de clientes: mesmos efeitos e tempos da home.
+    { g: 'clients-sectors', s: '.clients-sector > .t-h2', fx: 'lines', at: 80 },
+    { g: 'clients-logos', s: '.clients-sector .logo-grid__cell img', fx: 'up', d: 8, dur: 500, diag: 35, load: 400 },
+    { g: 'health', s: '#clients-videos-title', fx: 'up', d: 20, dur: 800 },
+    { g: 'health', s: '.clients-videos .health__caption', fx: 'up', d: 12, dur: 600, at: 120 },
+    { g: 'clients-contact', s: '.clients-contact .eyebrow', fx: 'up', d: 12, dur: 600 },
+    { g: 'clients-contact', s: '#clients-contact-title', fx: 'lines', at: 80 },
+    { g: 'clients-contact', s: '.clients-contact .btn', fx: 'up', d: 16, dur: 600, at: 250 },
     // 11. Para contadores
     { g: 'acc', s: '.accountants > .card-section__inner', fx: 'chapter',
       when: function () { return CONFIG.chapterOpen && !lite && w.innerWidth >= 961; } },
@@ -522,6 +531,9 @@
     { g: 'acc', s: '#acc-title', fx: 'up', d: 20, dur: 800, at: 80 },
     { g: 'acc', s: '.accountants__text .stack-p > p', fx: 'up', d: 16, dur: 700, lote: 90 },
     { g: 'acc', s: '.accountants__text > .link-caret--light', fx: 'fade', dur: 600 },
+    { g: 'acc', s: '.accountants__sescon', fx: 'up', d: 16, dur: 700, decode: 'img' },
+    { g: 'acc-partners', s: '.accountants__partners-head', fx: 'up', d: 12, dur: 600 },
+    { g: 'acc-partners', s: '.accountants__logos img', fx: 'up', d: 8, dur: 500, lote: 60, cap: 250, load: 400 },
     { g: 'acc', s: 'ol.accountants__steps', fx: 'none', deps: [
       { s: ':scope > li:nth-child(1)', fx: 'up', d: 12, dur: 600, at: 0, ease: EASE },
       { s: ':scope > li:nth-child(2) > svg', fx: 'wipe-y', dur: 600, at: 160 },
@@ -529,6 +541,12 @@
       { s: ':scope > li:nth-child(4) > svg', fx: 'wipe-y', dur: 600, at: 560 },
       { s: ':scope > li:nth-child(5)', fx: 'up', d: 12, dur: 600, at: 800 }
     ] },
+    // Convênios: mesmos efeitos de entrada das grades de logos da home.
+    { g: 'agreements', s: '.agreements__head .eyebrow', fx: 'up', d: 12, dur: 600 },
+    { g: 'agreements', s: '#agreements-title', fx: 'lines', at: 80 },
+    { g: 'agreements', s: '.agreements__copy > p', fx: 'up', d: 16, dur: 700, lote: 90 },
+    { g: 'agreements-logos', s: '.agreements__logos img', fx: 'up', d: 8, dur: 500, lote: 60, cap: 250, load: 400 },
+    { g: 'agreements', s: '.agreements__contact', fx: 'up', d: 12, dur: 600 },
     // 12. Conteúdos (nunca .blog__track nem .post__img img)
     { g: 'blog', s: '.blog__head .eyebrow', fx: 'up', d: 12, dur: 600 },
     { g: 'blog', s: '#blog-title', fx: 'lines', at: 80 },
@@ -616,7 +634,8 @@
     if (!batch.length) return;
     batch.sort(function (a, b) { return a.el.compareDocumentPosition(b.el) & 4 ? -1 : 1; });
     var now = performance.now(), base = Math.max(0, minStart - now), groups = {};
-    var cols = w.matchMedia('(max-width: 720px)').matches ? 2 : 5;
+    var cols = w.matchMedia('(max-width: 720px)').matches ? 2 :
+      (isClients && w.matchMedia('(max-width: 1000px)').matches ? 3 : 5);
     batch.forEach(function (r) { (groups[r.e.g] = groups[r.e.g] || []).push(r); });
     Object.keys(groups).forEach(function (g) {
       var list = groups[g], byE = new Map();
@@ -748,15 +767,20 @@
      --------------------------------------------------------- */
   function heroTimeline(bootAt, heroBottom) {
     var q = function (s) { return d.querySelector(s); };
-    var items = [
+    var items = (isClients ? [
+      { el: q('#clients-title'), at: 0, lines: true },
+      { el: q('.clients-intro__copy'), at: 200, d: 16, dur: 700 },
+      { el: q('.clients-niches-controls'), at: 320, d: 8, dur: 600 }
+    ] : [
       { el: q('.hero__eyebrow'), at: 0, d: 12, dur: 600 },
       { el: q('.hero .t-display'), at: 80, lines: true },
       { el: q('.hero__desc'), at: 320, d: 16, dur: 700 },
       { el: q('.hero__actions .btn--primary'), at: 440, d: 16, dur: 700 },
       { el: q('.hero__actions .btn--glass'), at: 520, d: 16, dur: 700 }
-    ].filter(function (it) { return it.el; });
-    heroEls = $$('.hero__eyebrow, .hero .t-display, .hero__desc, .hero__actions .btn');
-    var hero = q('.hero');
+    ]).filter(function (it) { return it.el; });
+    heroEls = isClients ? $$('.clients-intro h1, .clients-intro__copy, .clients-niches-controls') :
+      $$('.hero__eyebrow, .hero .t-display, .hero__desc, .hero__actions .btn');
+    var hero = q(isClients ? '.clients-intro' : '.hero');
     var finishStatic = function () { heroEls.forEach(function (el) { el.classList.add('is-in'); }); heroDone = true; };
     // Sem html.hero-anim (lite, ou o timer do gate venceu os 1400 ms) o hero nunca foi escondido
     if (!items.length || bootAt > 1400 || !hero || heroBottom <= 0 || !html.classList.contains('hero-anim')) { finishStatic(); return; }
@@ -789,7 +813,8 @@
     var an = d.getAnimations ? d.getAnimations().filter(function (a) { return a.id && a.id.indexOf('a-') === 0; }) : [];
     check('sem animações a-*', !an.length, an.length);
     var arts = $$('.cta-box__art, .step__art, .faq__art');
-    check('8 ilustrações são <img>', arts.length === 8 && arts.every(function (e) { return e.tagName === 'IMG'; }), arts.length);
+    var initialArts = Array.from(snap.keys()).filter(function (el) { return el.matches('.cta-box__art, .step__art, .faq__art'); });
+    check('ilustrações preservadas como <img>', arts.length === initialArts.length && arts.every(function (e) { return e.tagName === 'IMG'; }) && initialArts.every(function (e) { return e.isConnected; }), arts.length);
     check('sem svg com sufixo -a{n}', !$$('svg [id]').some(function (e) { return /-a\d+$/.test(e.id); }));
     var diffs = [];
     snap.forEach(function (v, el) {
@@ -797,10 +822,10 @@
       if (el.getAttribute('style') !== v) diffs.push((el.id || el.className || el.tagName) + ': ' + v + ' → ' + el.getAttribute('style'));
     });
     check('atributos style idênticos ao boot', !diffs.length, diffs.join(' | '));
-    var titles = $$('.hero .t-display, #property-title, #docs-title, #method-title, #about-title, .about__profile > .t-h2, #cases-title, #blog-title, #faq-title');
+    var titles = $$('.hero .t-display, #property-title, #docs-title, #method-title, #about-title, .about__profile > .t-h2, #cases-title, #blog-title, #faq-title, #clients-title, .clients-sector > .t-h2, #clients-contact-title');
     check('títulos com um único nó Text', titles.every(function (t) { return t.childNodes.length === 1 && t.firstChild.nodeType === 3; }));
     var st = d.querySelector('.stats > .stat:first-child > strong');
-    check('contador restaurado', st && st.textContent === '+20 anos' && !st.hasAttribute('aria-hidden') && !st.parentNode.querySelector('.sr-only'), st && st.textContent);
+    if (!isClients) check('contador restaurado', st && st.textContent === auditCounterText && !st.hasAttribute('aria-hidden') && !st.parentNode.querySelector('.sr-only'), st && st.textContent);
     var wc = $$('*').filter(function (e) { return getComputedStyle(e).willChange !== 'auto'; });
     check('sem will-change', !wc.length, wc.length);
     var stuck = $$('body *').filter(function (e) {
@@ -827,7 +852,11 @@
       !!(navigator.connection && navigator.connection.saveData);
     small = w.matchMedia('(max-width: 720px)').matches;
     audit = /[?&]anim-audit\b/.test(location.search);
-    if (audit) { snap = new Map(); $$('*').forEach(function (el) { snap.set(el, el.getAttribute('style')); }); }
+    if (audit) {
+      snap = new Map(); $$('*').forEach(function (el) { snap.set(el, el.getAttribute('style')); });
+      var auditCounter = d.querySelector('.stats > .stat:first-child > strong');
+      auditCounterText = auditCounter && auditCounter.textContent;
+    }
     minStart = now + 500;
 
     // Registro
@@ -846,7 +875,7 @@
 
     // Fase de leitura
     var vh = w.innerHeight;
-    var heroEl = d.querySelector('.hero'), heroBottom = heroEl ? heroEl.getBoundingClientRect().bottom : 0;
+    var heroEl = d.querySelector(isClients ? '.clients-intro' : '.hero'), heroBottom = heroEl ? heroEl.getBoundingClientRect().bottom : 0;
     var reads = records.map(function (r) {
       var top = r.el.getBoundingClientRect().top;
       return {

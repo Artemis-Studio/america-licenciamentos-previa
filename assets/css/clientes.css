@@ -1,0 +1,337 @@
+/* Página de clientes */
+.clients-page {
+  --clients-header-height: 81px;
+  --clients-niches-height: 58px;
+}
+
+.clients-page .clients-intro {
+  padding: 64px var(--section-px) 40px;
+}
+
+.clients-page .clients-intro h1 {
+  font-family: var(--font-head);
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.clients-page .clients-intro__copy {
+  max-width: 520px;
+  margin-top: 16px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js-anim.hero-anim .clients-page :is(.clients-intro h1, .clients-intro__copy, .clients-niches-controls):not(.is-in) {
+    opacity: 0;
+  }
+
+  html.js-anim.hero-anim:not(.anim-ready) .clients-page :is(.clients-intro h1, .clients-intro__copy, .clients-niches-controls) {
+    animation: a-failsafe 1ms 1500ms forwards;
+  }
+}
+
+.clients-page .clients-niches-bar {
+  position: sticky;
+  top: var(--clients-header-height);
+  z-index: 40;
+  padding: 8px var(--section-px);
+  background: var(--white);
+}
+
+.clients-page .clients-niches {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  padding-inline: 44px;
+  overflow-x: auto;
+  scroll-padding-inline: 44px;
+  scrollbar-width: none;
+}
+
+.clients-page .clients-niches::-webkit-scrollbar {
+  display: none;
+}
+
+.clients-page .clients-niches-controls {
+  position: relative;
+}
+
+.clients-page .clients-niches-controls::before,
+.clients-page .clients-niches-controls::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 76px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+.clients-page .clients-niches-controls::before {
+  left: 0;
+  background: linear-gradient(to right, var(--white) 32px, rgba(255, 255, 255, 0));
+}
+
+.clients-page .clients-niches-controls::after {
+  right: 0;
+  background: linear-gradient(to left, var(--white) 32px, rgba(255, 255, 255, 0));
+}
+
+.clients-page .clients-niches-controls.has-previous::before,
+.clients-page .clients-niches-controls.has-next::after {
+  opacity: 1;
+}
+
+.clients-page .clients-niches-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-btn);
+  background: var(--white);
+  transform: translateY(-50%);
+}
+
+.clients-page .clients-niches-arrow--previous {
+  left: 0;
+}
+
+.clients-page .clients-niches-arrow--next {
+  right: 0;
+}
+
+.clients-page .clients-niches-arrow .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.clients-page .clients-niches-arrow:hover:enabled {
+  background: var(--surface-100);
+}
+
+.clients-page .clients-niches-arrow:disabled {
+  color: var(--gray-200);
+  cursor: default;
+}
+
+.clients-page .clients-niches a {
+  flex: none;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.clients-page .clients-niches a:hover {
+  border-color: var(--blue-600);
+  background: var(--surface-100);
+  color: var(--blue-600);
+}
+
+.clients-page .clients-niches a:focus-visible {
+  outline-offset: -3px;
+}
+
+.clients-page .clients-directory {
+  padding: 0 var(--section-px) var(--section-py);
+}
+
+.clients-page .clients-sector {
+  padding-top: 40px;
+}
+
+.clients-page .clients-sector,
+.clients-page #relatos {
+  scroll-margin-top: calc(var(--clients-header-height) + var(--clients-niches-height) + 16px);
+}
+
+.clients-page .clients-sector + .clients-sector {
+  margin-top: 24px;
+}
+
+.clients-page .clients-sector .logo-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 24px;
+}
+
+.clients-page .clients-sector .logo-grid__cell {
+  height: 112px;
+  border-left: 1px solid var(--line);
+  border-right: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.clients-page .clients-sector .logo-grid__cell::after {
+  display: block;
+}
+
+.clients-page .clients-sector .logo-grid__cell img {
+  width: auto;
+  max-width: min(80%, 160px);
+  height: auto;
+  max-height: 64px;
+  object-fit: contain;
+  transform: none;
+}
+
+.clients-page .clients-sector .logo-grid__cell--dark {
+  background: var(--ink-950);
+}
+
+.clients-page .clients-videos .health__testimonials-grid {
+  margin-top: 32px;
+}
+
+.clients-page .clients-videos .health__video {
+  aspect-ratio: 9 / 16;
+}
+
+.clients-page .clients-contact {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 520px;
+  padding-top: 96px;
+  padding-bottom: 112px;
+  background: var(--white);
+  scroll-margin-top: calc(var(--clients-header-height, 84px) + var(--clients-niches-height, 52px));
+}
+
+.clients-page .clients-contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(0, 124, 191, .56) 1px, transparent 1.3px);
+  background-size: 4px 4px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 12%, rgba(0, 0, 0, .06) 40%, rgba(0, 0, 0, .55) 70%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 12%, rgba(0, 0, 0, .06) 40%, rgba(0, 0, 0, .55) 70%, #000 100%);
+}
+
+.clients-page .clients-contact .container {
+  position: relative;
+  z-index: 1;
+}
+
+.clients-page .clients-contact__content {
+  width: 100%;
+  max-width: 780px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.clients-page .clients-contact .t-h2 {
+  max-width: 680px;
+  margin-inline: auto;
+  margin-top: 16px;
+  font-size: clamp(36px, 3.5vw, 50px);
+  line-height: 1.14;
+  text-wrap: balance;
+}
+
+.clients-page .clients-contact__description {
+  max-width: 560px;
+  margin-top: 20px;
+  margin-inline: auto;
+}
+
+.clients-page .clients-contact .btn {
+  margin-top: 28px;
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* Cada faixa aplica suas próprias bordas para linhas completas ou parciais. */
+@media (min-width: 1001px) {
+  .clients-page .clients-sector .logo-grid__cell:nth-child(5n + 1) {
+    border-left: 0;
+  }
+
+  .clients-page .clients-sector .logo-grid__cell:nth-child(5n)::after {
+    display: none;
+  }
+
+  .clients-page .clients-sector .logo-grid__cell:nth-child(5n + 1):nth-last-child(-n + 5),
+  .clients-page .clients-sector .logo-grid__cell:nth-child(5n + 1):nth-last-child(-n + 5) ~ .logo-grid__cell {
+    border-bottom: 0;
+  }
+
+  .clients-page .clients-sector .logo-grid__cell:nth-child(5n + 1):nth-last-child(-n + 5)::after,
+  .clients-page .clients-sector .logo-grid__cell:nth-child(5n + 1):nth-last-child(-n + 5) ~ .logo-grid__cell::after {
+    display: none;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1000px) {
+  .clients-page .clients-sector .logo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .clients-page .clients-sector .logo-grid__cell:nth-child(3n + 1) {
+    border-left: 0;
+  }
+
+  .clients-page .clients-sector .logo-grid__cell:nth-child(3n)::after {
+    display: none;
+  }
+
+  .clients-page .clients-sector .logo-grid__cell:nth-child(3n + 1):nth-last-child(-n + 3),
+  .clients-page .clients-sector .logo-grid__cell:nth-child(3n + 1):nth-last-child(-n + 3) ~ .logo-grid__cell {
+    border-bottom: 0;
+  }
+
+  .clients-page .clients-sector .logo-grid__cell:nth-child(3n + 1):nth-last-child(-n + 3)::after,
+  .clients-page .clients-sector .logo-grid__cell:nth-child(3n + 1):nth-last-child(-n + 3) ~ .logo-grid__cell::after {
+    display: none;
+  }
+
+}
+
+@media (max-width: 1000px) {
+  .clients-page .clients-contact {
+    min-height: 0;
+    padding-top: 64px;
+    padding-bottom: 88px;
+  }
+
+  .clients-page .clients-contact__content {
+    width: 100%;
+    max-width: 560px;
+  }
+
+}
+
+@media (max-width: 720px) {
+  .clients-page .clients-intro {
+    padding-top: 40px;
+    padding-bottom: 24px;
+  }
+
+  .clients-page .clients-sector .logo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .clients-page .clients-sector .logo-grid__cell {
+    height: 96px;
+    border-left: 1px solid var(--line) !important;
+    border-right: 0;
+    border-bottom: 1px solid var(--line) !important;
+  }
+
+  .clients-page .clients-sector .logo-grid__cell:nth-child(2n + 1) {
+    border-left: 0 !important;
+  }
+
+  .clients-page .clients-sector .logo-grid__cell:nth-child(2n + 1):nth-last-child(-n + 2),
+  .clients-page .clients-sector .logo-grid__cell:nth-child(2n + 1):nth-last-child(-n + 2) ~ .logo-grid__cell {
+    border-bottom: 0 !important;
+  }
+
+}

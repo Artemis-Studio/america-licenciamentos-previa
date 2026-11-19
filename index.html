@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preload" as="image" href="assets/images/hero-sao-paulo.jpg" fetchpriority="high">
   <script>
@@ -37,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Stack+Sans+Headline:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=39">
+  <link rel="stylesheet" href="assets/css/style.css?v=58">
 </head>
 <body>
 <!-- sprite:start -->
@@ -94,19 +93,58 @@
     <a class="site-header__logo" href="#topo" aria-label="América Licenciamentos — início">
       <img src="assets/images/logo-america.png" width="145" height="48" alt="América Licenciamentos">
     </a>
-    <nav class="nav" aria-label="Principal">
-      <a href="#topo" aria-current="page">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#solucoes">Soluções</a>
-      <a href="#saude-e-clinicas">Saúde e clínicas</a>
-      <a href="#contadores">Contadores</a>
-      <a href="#cases">Clientes</a>
-      <a href="#conteudos">Conteúdos</a>
+    <nav class="nav" id="primary-navigation" aria-label="Principal">
+      <a href="index.html" aria-current="page">Início</a>
+      <div class="nav__services">
+        <button class="nav__trigger" id="services-toggle" type="button" aria-expanded="false" aria-controls="services-mega-menu">
+          <span class="nav__trigger-label">Serviços<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="m5 7.5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="mega-menu" id="services-mega-menu" hidden>
+          <div class="mega-menu__intro">
+            <p class="eyebrow">Serviços</p>
+            <p class="t-h3">Licenciamento e regularização</p>
+          </div>
+          <div class="mega-menu__grid">
+          <div class="mega-menu__service">
+            <a class="mega-menu__service-title" href="servicos/alvara-de-funcionamento/"><span class="doc__icon mega-menu__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc-factory"/></svg></span><span>Alvará de funcionamento</span><svg class="mega-menu__chevron" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="m7.5 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="mega-menu__service">
+            <a class="mega-menu__service-title" href="servicos/regularizacao-de-imoveis/"><span class="doc__icon mega-menu__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc-storefront"/></svg></span><span>Habite-se e certificado de conclusão</span><svg class="mega-menu__chevron" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="m7.5 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="mega-menu__service">
+            <a class="mega-menu__service-title" href="servicos/corpo-de-bombeiros/"><span class="doc__icon mega-menu__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc-certificate"/></svg></span><span>AVCB e CLCB</span><svg class="mega-menu__chevron" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="m7.5 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="mega-menu__service">
+            <a class="mega-menu__service-title" href="servicos/vigilancia-sanitaria/"><span class="doc__icon mega-menu__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc-firstaid"/></svg></span><span>Licença sanitária</span><svg class="mega-menu__chevron" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="m7.5 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="mega-menu__service">
+            <a class="mega-menu__service-title" href="servicos/segur-avs/"><span class="doc__icon mega-menu__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc-shield"/></svg></span><span>Certificado de Segurança (antigo AVS)</span><svg class="mega-menu__chevron" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="m7.5 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="mega-menu__service">
+            <a class="mega-menu__service-title" href="servicos/licenciamento-ambiental/"><span class="doc__icon mega-menu__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc-leaf"/></svg></span><span>Licenciamento ambiental</span><svg class="mega-menu__chevron" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="m7.5 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="mega-menu__service">
+            <a class="mega-menu__service-title" href="servicos/acessibilidade/"><span class="doc__icon mega-menu__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc-person"/></svg></span><span>Acessibilidade</span><svg class="mega-menu__chevron" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="m7.5 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="mega-menu__service">
+            <a class="mega-menu__service-title" href="servicos/patrimonio-historico/"><span class="doc__icon mega-menu__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc-bank"/></svg></span><span>Patrimônio histórico</span><svg class="mega-menu__chevron" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="m7.5 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          <div class="mega-menu__service">
+            <a class="mega-menu__service-title" href="servicos/registro-de-imoveis/"><span class="doc__icon mega-menu__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc-file"/></svg></span><span>Averbações em Registro de Imóveis (Matrículas)</span><svg class="mega-menu__chevron" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="m7.5 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          </div>
+        </div>
+      </div>
+      <a href="clientes.html">Clientes</a>
+      <a href="contadores/">Contadores</a>
+      <a href="quem-somos/">Quem somos</a>
+      <a href="blog/">Blog</a>
+      <a href="contato/">Contato</a>
     </nav>
     <div class="site-header__actions">
       <a class="phone-link" href="tel:+551120992020"><svg class="icon icon--20" aria-hidden="true"><use href="#i-phone"/></svg>(11) 2099-2020</a>
-      <a class="btn btn--outline" href="#diagnostico">Solicitar diagnóstico</a>
-      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu">
+      <a class="btn btn--outline" href="https://whatsapp.americalicenciamentos.com.br/" target="_blank" rel="noopener noreferrer">Solicitar diagnóstico</a>
+      <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir menu">
         <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path class="menu-toggle__bars" d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path class="menu-toggle__close" d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -128,7 +166,7 @@
         <p class="t-body muted hero__desc">Vai comprar, vender, alugar, reformar ou expandir? A América avalia a situação regulatória do imóvel e as exigências da atividade para orientar sua decisão e conduzir o licenciamento e a regularização.</p>
       </div>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="#contato"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-circle-right"/></svg>Solicitar diagnóstico</a>
+        <a class="btn btn--primary" href="https://whatsapp.americalicenciamentos.com.br/" target="_blank" rel="noopener noreferrer"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-circle-right"/></svg>Solicitar diagnóstico</a>
         <a class="btn btn--glass" href="#solucoes"><svg class="icon icon--20" aria-hidden="true"><use href="#i-file-text"/></svg>Conhecer soluções</a>
       </div>
     </div>
@@ -179,7 +217,7 @@
           <h3 class="t-h3">Regularização de imóveis</h3>
           <p class="t-body muted">Vai comprar, vender, alugar ou regularizar um imóvel? A América analisa a situação da edificação e sua documentação, identifica pendências e avalia os caminhos possíveis de regularização. A condução do trabalho considera as características do imóvel e o objetivo da negociação ou do uso.</p>
         </div>
-        <a class="link-caret link-caret--blue" href="#contato">Solicitar diagnóstico<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a>
+        <a class="link-caret link-caret--blue" href="https://whatsapp.americalicenciamentos.com.br/" target="_blank" rel="noopener noreferrer">Solicitar diagnóstico<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a>
       </article>
       <article class="feature docs__path">
         <div class="feature__img"><img src="assets/images/doc-sanitaria.jpg" width="580" height="602" alt="Sala de atendimento de uma clínica com cadeira e pia" loading="lazy"></div>
@@ -195,7 +233,7 @@
           <h3 class="t-h3">Notificações, embargos e interdições</h3>
           <p class="t-body muted">Recebeu uma notificação, multa, embargo ou interdição? A América analisa o documento, as exigências e os prazos indicados para definir os próximos passos e conduzir o trabalho técnico contratado. A situação de cada processo é acompanhada com clareza sobre avanços e pendências.</p>
         </div>
-        <a class="link-caret link-caret--blue" href="#contato">Apresentar uma demanda<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a>
+        <a class="link-caret link-caret--blue" href="https://whatsapp.americalicenciamentos.com.br/" target="_blank" rel="noopener noreferrer">Apresentar uma demanda<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a>
       </article>
     </div>
     <h3 class="t-h2 docs__services-title" id="docs-services-title">Licenças, alvarás e regularização</h3>
@@ -286,7 +324,7 @@
         <p>Conte o que você precisa fazer com o imóvel ou com sua empresa. Nossa equipe avaliará a demanda e informará os próximos passos.</p>
       </div>
       <div class="cta-box__action">
-        <a class="btn btn--primary" href="#contato" aria-describedby="diagnostico-solucoes-apoio"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-circle-right"/></svg>Solicitar diagnóstico</a>
+        <a class="btn btn--primary" href="https://whatsapp.americalicenciamentos.com.br/" aria-describedby="diagnostico-solucoes-apoio" target="_blank" rel="noopener noreferrer"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-circle-right"/></svg>Solicitar diagnóstico</a>
         <p class="t-small muted" id="diagnostico-solucoes-apoio">O escopo e as condições do diagnóstico são definidos conforme o caso, antes do início do trabalho.</p>
       </div>
     </div>
@@ -326,7 +364,7 @@
     <div class="cta-box">
       <img class="cta-box__art" src="assets/images/ilustra-cta.svg" alt="" aria-hidden="true">
       <p class="t-body cta-box__text">Conte o que você pretende fazer e em qual imóvel. A equipe avaliará o escopo do diagnóstico para o seu caso.</p>
-      <a class="btn btn--primary" href="#contato"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-circle-right"/></svg>Solicitar diagnóstico</a>
+      <a class="btn btn--primary" href="https://whatsapp.americalicenciamentos.com.br/" target="_blank" rel="noopener noreferrer"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-circle-right"/></svg>Solicitar diagnóstico</a>
     </div>
   </div>
 </section>
@@ -386,7 +424,7 @@
     <div class="cta-box">
       <p class="t-body cta-box__text">Uma decisão sobre o imóvel também exige análise regulatória. Comece antes de assumir compromissos.</p>
       <div class="cta-box__action">
-        <a class="btn btn--primary" href="#contato" aria-describedby="diagnostico-metodo-apoio"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-circle-right"/></svg>Solicitar diagnóstico</a>
+        <a class="btn btn--primary" href="https://whatsapp.americalicenciamentos.com.br/" aria-describedby="diagnostico-metodo-apoio" target="_blank" rel="noopener noreferrer"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-circle-right"/></svg>Solicitar diagnóstico</a>
         <p class="t-small muted" id="diagnostico-metodo-apoio">O escopo e as condições do diagnóstico são definidos conforme o caso, antes do início do trabalho.</p>
       </div>
     </div>
@@ -457,7 +495,7 @@
     <ul class="sectors" aria-label="Setores">
       <li>Varejo</li><li>Alimentação</li><li>Saúde</li><li>Construção e incorporação</li><li>Indústria</li>
     </ul>
-    <ul class="logo-grid logo-grid--rows-4">
+    <ul class="logo-grid logo-grid--rows-2">
       <li class="logo-grid__cell"><img src="assets/images/cases/leroy.png" width="82" height="48" alt="Leroy Merlin" loading="lazy"></li>
       <li class="logo-grid__cell"><img src="assets/images/cases/nissin.png" width="93" height="48" alt="Nissin" loading="lazy"></li>
       <li class="logo-grid__cell"><img src="assets/images/cases/aacd.png" width="45" height="48" alt="AACD" loading="lazy"></li>
@@ -468,18 +506,8 @@
       <li class="logo-grid__cell"><img src="assets/images/cases/afip.png" width="100" height="30" alt="AFIP" loading="lazy"></li>
       <li class="logo-grid__cell"><img src="assets/images/cases/auxiliadora.png" width="123" height="32" alt="Auxiliadora Predial" loading="lazy"></li>
       <li class="logo-grid__cell"><img src="assets/images/cases/velcro.png" width="128" height="32" alt="Velcro" loading="lazy"></li>
-      <li class="logo-grid__cell"><img src="assets/images/cases/carrefour.png" width="141" height="24" alt="Carrefour" loading="lazy"></li>
-      <li class="logo-grid__cell"><img src="assets/images/cases/bonduelle.png" width="121" height="48" alt="Bonduelle" loading="lazy"></li>
-      <li class="logo-grid__cell"><img src="assets/images/cases/saude-bandeirantes.png" width="176" height="32" alt="Grupo Saúde Bandeirantes" loading="lazy"></li>
-      <li class="logo-grid__cell"><img src="assets/images/cases/libercon.png" width="143" height="32" alt="Libercon Engenharia" loading="lazy"></li>
-      <li class="logo-grid__cell"><img src="assets/images/cases/middleby.png" width="152" height="32" alt="Middleby" loading="lazy"></li>
-      <li class="logo-grid__cell"><img src="assets/images/cases/americanas.png" width="122" height="24" alt="Americanas" loading="lazy"></li>
-      <li class="logo-grid__cell"><img src="assets/images/cases/grand-cru.png" width="150" height="38" alt="Grand Cru" loading="lazy"></li>
-      <li class="logo-grid__cell"><img src="assets/images/cases/lifesil.png" width="104" height="32" alt="LifeSil" loading="lazy"></li>
-      <li class="logo-grid__cell"><img src="assets/images/cases/by-engenharia.png" width="88" height="40" alt="By Engenharia" loading="lazy"></li>
-      <li class="logo-grid__cell"><img src="assets/images/cases/nofor.png" width="102" height="40" alt="Nofor" loading="lazy"></li>
     </ul>
-    <div class="cases__cta"><a class="btn btn--primary btn--plain" href="#cases">Ver clientes</a></div>
+    <div class="cases__cta"><a class="btn btn--primary btn--plain" href="clientes.html">Ver clientes</a></div>
   </div>
 </section>
 
@@ -635,12 +663,25 @@
         <li class="logo-grid__cell"><img src="assets/images/cases/afip.png" width="100" height="30" alt="AFIP" loading="lazy"></li>
         <li class="logo-grid__cell"><img src="assets/images/cases/saude-bandeirantes.png" width="176" height="32" alt="Grupo Saúde Bandeirantes" loading="lazy"></li>
       </ul>
+      <p style="margin-top:24px"><a class="link-caret link-caret--blue" href="clientes.html#saude">Ver todos os clientes de saúde<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a></p>
     </div>
   </div>
 </section>
 
 <!-- 10. Para contadores · 7053:869 -->
 <section class="card-section accountants" id="contadores" aria-labelledby="acc-title">
+  <svg class="accountants__mask-defs" width="0" height="0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="accountants-logo-gray" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feFlood flood-color="#DBDCE0" result="gray"/>
+        <feComposite in="gray" in2="SourceAlpha" operator="in"/>
+      </filter>
+      <filter id="accountants-logo-knockout" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0 0 0 0 .858824 0 0 0 0 .862745 0 0 0 0 .878431 -1 -1 -1 0 3" result="gray"/>
+        <feComposite in="gray" in2="SourceAlpha" operator="in"/>
+      </filter>
+    </defs>
+  </svg>
   <div class="card-section__inner">
     <div class="container accountants__grid">
       <div class="accountants__text">
@@ -666,17 +707,67 @@
       <div class="accountants__aside">
         <ol class="accountants__steps" id="fluxo-contadores" aria-label="Como funciona a parceria">
           <li><span class="eyebrow eyebrow--dark">Etapa 1</span><span class="t-h3">Você apresenta o caso</span></li>
-          <li class="accountants__arrow" aria-hidden="true"><svg width="49" height="87" viewBox="0 0 49 87"><path d="M24.5 0H24V86.5H25V0H24.5ZM24.1464 86.8536C24.3417 87.0488 24.6583 87.0488 24.8536 86.8536L28.0355 83.6716C28.2308 83.4763 28.2308 83.1597 28.0355 82.9645C27.8403 82.7692 27.5237 82.7692 27.3284 82.9645L24.5 85.7929L21.6716 82.9645C21.4763 82.7692 21.1597 82.7692 20.9645 82.9645C20.7692 83.1597 20.7692 83.4763 20.9645 83.6716L24.1464 86.8536Z" fill="#fff" fill-opacity=".15"/></svg></li>
+          <li class="accountants__arrow" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 1v22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></li>
           <li><span class="eyebrow eyebrow--dark">Etapa 2</span><span class="t-h3">Alinhamos o trabalho</span></li>
-          <li class="accountants__arrow" aria-hidden="true"><svg width="49" height="87" viewBox="0 0 49 87"><path d="M24.5 0H24V86.5H25V0H24.5ZM24.1464 86.8536C24.3417 87.0488 24.6583 87.0488 24.8536 86.8536L28.0355 83.6716C28.2308 83.4763 28.2308 83.1597 28.0355 82.9645C27.8403 82.7692 27.5237 82.7692 27.3284 82.9645L24.5 85.7929L21.6716 82.9645C21.4763 82.7692 21.1597 82.7692 20.9645 82.9645C20.7692 83.1597 20.7692 83.4763 20.9645 83.6716L24.1464 86.8536Z" fill="#fff" fill-opacity=".15"/></svg></li>
+          <li class="accountants__arrow" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 1v22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></li>
           <li><span class="eyebrow eyebrow--dark">Etapa 3</span><span class="t-h3">Nossa equipe conduz e mantém seu escritório informado</span></li>
         </ol>
-        <div class="accountants__case">
-          <h3 class="t-h3">Já tem um caso?</h3>
-          <p class="t-body">Conte a demanda à nossa equipe. Vamos avaliar como podemos apoiar seu escritório e seu cliente.</p>
-          <a class="link-caret link-caret--light" href="#contato">Apresentar uma demanda<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a>
+        <div class="accountants__case-row">
+          <div class="accountants__case">
+            <div class="accountants__case-copy">
+              <h3 class="t-h3">Já tem um caso?</h3>
+              <p class="t-body">Conte a demanda à nossa equipe. Vamos avaliar como podemos apoiar seu escritório e seu cliente.</p>
+              <a class="link-caret link-caret--light" href="https://whatsapp.americalicenciamentos.com.br/" target="_blank" rel="noopener noreferrer">Apresentar uma demanda<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a>
+            </div>
+          </div>
+          <div class="accountants__sescon">
+            <h3 class="t-h3">Empresa parceira SESCON SP</h3>
+            <img src="assets/images/parceiros/sescon-sp.png?v=2" width="196" height="183" alt="SESCON-SP" loading="lazy" style="filter:url(#accountants-logo-knockout)">
+          </div>
         </div>
       </div>
+      <div class="accountants__partners" aria-labelledby="accountants-partners-title">
+        <div class="accountants__partners-head">
+          <h3 class="t-h3" id="accountants-partners-title">Escritórios parceiros</h3>
+          <a class="link-caret link-caret--light" href="clientes.html#contadores">Ver todos os escritórios parceiros<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a>
+        </div>
+        <ul class="accountants__logos" aria-labelledby="accountants-partners-title">
+          <li><img src="assets/images/clientes/contadores/mg-contecnica.webp" width="64" height="64" alt="MG Contécnica" loading="lazy" style="filter:url(#accountants-logo-knockout)"></li>
+          <li><img src="assets/images/clientes/contadores/forvis-mazars.svg" width="152" height="64" alt="Forvis Mazars" loading="lazy" style="filter:url(#accountants-logo-gray)"></li>
+          <li><img src="assets/images/clientes/contadores/segeti-consultoria.webp" width="160" height="44" alt="Segeti Consultoria" loading="lazy" style="filter:url(#accountants-logo-gray)"></li>
+          <li><img src="assets/images/clientes/contadores/aj-contabil-ajmed.webp" width="69" height="64" alt="AJ Contábil / AJMED" loading="lazy" style="filter:url(#accountants-logo-gray)"></li>
+          <li><img src="assets/images/clientes/contadores/ocm7.webp" width="148" height="64" alt="OCM7" loading="lazy" style="filter:url(#accountants-logo-gray)"></li>
+          <li><img src="assets/images/clientes/contadores/contmed.svg" width="160" height="41" alt="CONTMED" loading="lazy" style="filter:url(#accountants-logo-gray)"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Convênios · conteúdo e entidades da página institucional -->
+<section class="section section--white agreements" id="convenios" aria-labelledby="agreements-title">
+  <div class="container">
+    <div class="agreements__head">
+      <div>
+        <p class="eyebrow">Parcerias institucionais</p>
+        <h2 class="t-h2" id="agreements-title">Convênios</h2>
+      </div>
+      <div class="stack-p agreements__copy">
+        <p class="t-body muted">A América é conveniada a associações patronais e entidades de classe para apoiar seus associados no licenciamento de empresas e na regularização de imóveis.</p>
+        <p class="t-body muted">Os convênios oferecem benefícios específicos, como orientação gratuita e preços diferenciados.</p>
+      </div>
+    </div>
+    <ul class="agreements__logos" aria-label="Entidades conveniadas">
+      <li><img src="assets/images/convenios/sescon-sp.png" width="105" height="112" alt="SESCON-SP" loading="lazy"></li>
+      <li><img src="assets/images/convenios/simpi.png" width="132" height="103" alt="SIMPI" loading="lazy"></li>
+      <li><img src="assets/images/convenios/siesp.png" width="159" height="64" alt="SIESP" loading="lazy"></li>
+      <li><img src="assets/images/convenios/oab-caasp.png" width="149" height="91" alt="OAB / CAASP" loading="lazy"></li>
+      <li><img src="assets/images/convenios/abih-sp.png" width="175" height="81" alt="ABIH-SP" loading="lazy"></li>
+      <li><img src="assets/images/convenios/sindipan-sp.png" width="91" height="94" alt="SINDIPAN São Paulo" loading="lazy"></li>
+    </ul>
+    <div class="agreements__contact">
+      <p class="t-body muted">Sua empresa é associada a uma dessas entidades?</p>
+      <a class="link-caret link-caret--blue" href="https://whatsapp.americalicenciamentos.com.br/" target="_blank" rel="noopener noreferrer">Consultar benefícios do convênio<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a>
     </div>
   </div>
 </section>
@@ -747,7 +838,7 @@
         <div class="t-body">
           <p>Entenda quais licenças podem se aplicar à sua empresa, o que verificar antes de escolher um imóvel e como agir se receber uma notificação.</p>
         </div>
-        <a class="btn btn--primary" href="#contato"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-circle-right"/></svg>Fale com nossa equipe</a>
+        <a class="btn btn--primary" href="https://whatsapp.americalicenciamentos.com.br/" target="_blank" rel="noopener noreferrer"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-circle-right"/></svg>Fale com nossa equipe</a>
         <img class="faq__art" src="assets/images/ilustra-faq.svg" width="197" height="197" alt="" aria-hidden="true">
       </div>
     </div>
@@ -756,7 +847,7 @@
         <button class="faq-item__q t-h3" type="button" aria-expanded="true"><span>Como saber qual alvará minha empresa precisa em São Paulo?</span><svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></button>
         <div class="faq-item__a"><div><div class="t-body muted stack-p">
           <p>Na cidade de São Paulo, o documento municipal aplicável depende da atividade exercida, do endereço e das características da operação. A análise indica qual licença se aplica, se há hipótese de dispensa e se a empresa também precisa de documentos da Vigilância Sanitária, do Corpo de Bombeiros ou do órgão ambiental.</p>
-          <p><a class="link-caret link-caret--blue" href="https://americalicenciamentos.com.br/como-tirar-o-alvara-de-funcionamento-em-sp/">Como tirar o alvará de funcionamento em SP?<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a></p>
+          <p><a class="link-caret link-caret--blue" href="https://americalicenciamentos.com.br/como-tirar-o-alvara-de-funcionamento-em-sp/" target="_blank" rel="noopener noreferrer">Como tirar o alvará de funcionamento em SP?<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a></p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -783,14 +874,14 @@
         <button class="faq-item__q t-h3" type="button" aria-expanded="false"><span>Recebi uma notificação, multa, embargo ou interdição. O que devo fazer primeiro?</span><svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></button>
         <div class="faq-item__a"><div><div class="t-body muted stack-p">
           <p>Identifique o órgão responsável, confira o que o documento determina e verifique o prazo e a data a partir da qual ele é contado. Em caso de embargo ou interdição, respeite as restrições indicadas no documento. Protocolar um pedido de regularização, por si só, não suspende essas medidas. A América pode analisar o caso e indicar quais providências precisam ser priorizadas.</p>
-          <p><a class="link-caret link-caret--blue" href="#contato">Recebi uma notificação ou tenho um prazo<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a></p>
+          <p><a class="link-caret link-caret--blue" href="https://whatsapp.americalicenciamentos.com.br/" target="_blank" rel="noopener noreferrer">Recebi uma notificação ou tenho um prazo<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a></p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-item__q t-h3" type="button" aria-expanded="false"><span>Recebi um comunique-se da Prefeitura de São Paulo. Qual é o prazo para responder?</span><svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></button>
         <div class="faq-item__a"><div><div class="t-body muted stack-p">
           <p>O comunique-se é uma solicitação de documentos, correções ou esclarecimentos em um processo. O prazo, o início da contagem e a possibilidade de prorrogação dependem do tipo de processo e da regra aplicável. Confira o registro oficial da comunicação. Ao falar com a nossa equipe, tenha em mãos o número do protocolo e a data da comunicação.</p>
-          <p><a class="link-caret link-caret--blue" href="#contato">Recebi uma notificação ou tenho um prazo<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a></p>
+          <p><a class="link-caret link-caret--blue" href="https://whatsapp.americalicenciamentos.com.br/" target="_blank" rel="noopener noreferrer">Recebi uma notificação ou tenho um prazo<svg class="icon" aria-hidden="true"><use href="#i-caret-right-20"/></svg></a></p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -904,8 +995,8 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=16" defer></script>
-<script src="assets/js/animations.js?v=11" defer></script>   <!-- SEMPRE depois do main.js -->
+<script src="assets/js/main.js?v=17" defer></script>
+<script src="assets/js/animations.js?v=14" defer></script>   <!-- SEMPRE depois do main.js -->
 
 </body>
 </html>

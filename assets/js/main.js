@@ -2,11 +2,24 @@
 (function () {
   'use strict';
 
-  /* Menu mobile */
+  /* Navegação principal e mega menu de serviços. */
   var header = document.querySelector('.site-header');
   var toggle = document.querySelector('.menu-toggle');
   if (header && toggle) {
+    var navigation = header.querySelector('.nav');
+    var services = header.querySelector('.nav__services');
+    var servicesToggle = header.querySelector('#services-toggle');
+    var servicesPanel = header.querySelector('#services-mega-menu');
+    var mobileNavigation = window.matchMedia('(max-width: 1180px)');
+
+    function setServicesOpen(open) {
+      if (!servicesToggle || !servicesPanel) return;
+      servicesToggle.setAttribute('aria-expanded', String(open));
+      servicesPanel.hidden = !open;
+    }
+
     function setMenuOpen(open) {
+      if (!open) setServicesOpen(false);
       header.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
@@ -18,6 +31,60 @@
     header.querySelectorAll('.nav a').forEach(function (a) {
       a.addEventListener('click', function () { setMenuOpen(false); });
     });
+
+    if (servicesToggle && servicesPanel && services) {
+      servicesToggle.addEventListener('click', function () {
+        setServicesOpen(servicesToggle.getAttribute('aria-expanded') !== 'true');
+      });
+      servicesToggle.addEventListener('keydown', function (event) {
+        if (event.key !== 'ArrowDown') return;
+        event.preventDefault();
+        setServicesOpen(true);
+        servicesPanel.querySelector('a').focus();
+      });
+      services.addEventListener('focusout', function (event) {
+        if (!services.contains(event.relatedTarget)) setServicesOpen(false);
+      });
+    }
+
+    header.addEventListener('keydown', function (event) {
+      if (event.key !== 'Escape') return;
+      if (servicesToggle && servicesToggle.getAttribute('aria-expanded') === 'true') {
+        event.preventDefault();
+        setServicesOpen(false);
+        servicesToggle.focus();
+      } else if (header.classList.contains('is-open')) {
+        event.preventDefault();
+        setMenuOpen(false);
+        toggle.focus();
+      }
+    });
+    header.addEventListener('focusout', function (event) {
+      if (event.relatedTarget && !header.contains(event.relatedTarget)) setMenuOpen(false);
+    });
+    document.addEventListener('click', function (event) {
+      if (!header.contains(event.target)) setMenuOpen(false);
+    });
+
+    function resetNavigation() {
+      var focusedInNavigation = navigation && navigation.contains(document.activeElement);
+      var focusedInServices = servicesPanel && servicesPanel.contains(document.activeElement);
+      setMenuOpen(false);
+      if (mobileNavigation.matches && focusedInNavigation) toggle.focus();
+      else if (focusedInServices) servicesToggle.focus();
+    }
+    if (mobileNavigation.addEventListener) mobileNavigation.addEventListener('change', resetNavigation);
+    else if (mobileNavigation.addListener) mobileNavigation.addListener(resetNavigation);
+
+    function updateNavigationHeight() {
+      header.style.setProperty('--navigation-header-height', header.getBoundingClientRect().height + 'px');
+    }
+    updateNavigationHeight();
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(updateNavigationHeight).observe(header.querySelector('.site-header__bar'));
+    } else {
+      window.addEventListener('resize', updateNavigationHeight);
+    }
   }
 
   /* Documentos: abas em acordeão + troca da ilustração */
